@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apna Bazaar - Smart Marketplace</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="loginOverlay" class="login-overlay">
+        <div class="login-box">
+            <h2>Apna Bazaar</h2>
+            <p>Login karke shuru karein</p>
+            <input type="text" id="loginName" placeholder="Aapka Poora Naam" required>
+            <div style="text-align: left; margin: 10px 0;">
+                <label style="font-size: 12px; color: #666;">Profile Photo:</label>
+                <input type="file" id="loginImg" accept="image/*">
+            </div>
+            <button onclick="handleLogin()">Website Kholein</button>
+        </div>
+    </div>
+
+    <div id="mainApp" style="display:none;">
+        <nav class="navbar">
+            <div class="logo">Apna Bazaar</div>
+            <div id="userProfileNav" class="user-nav"></div>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showSection('sellSection')">Samaan Beche</a></li>
+                <li><a href="#" onclick="showSection('marketSection')">Marketplace</a></li>
+                <li><a href="#" onclick="showSection('leadsSection')">Replies</a></li>
+                <li><a href="#" onclick="showSection('soldSection')">Sold History</a></li>
+                <li><a href="#" onclick="logout()" style="color: #ff7675;">Logout</a></li>
+            </ul>
+        </nav>
+
+        <div class="container">
+            <section id="sellSection" class="content-section">
+                <h2 id="formTitle">Naya Samaan Post Karein</h2>
+                <form id="productForm" class="sell-form">
+                    <input type="hidden" id="editId" value="">
+                    
+                    <input type="text" id="prodName" placeholder="Item ka naam" required>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="number" id="prodPrice" placeholder="Price (₹)" required>
+                        <input type="number" id="prodQty" placeholder="Stock Quantity" min="1" required>
+                    </div>
+                    <textarea id="prodDesc" placeholder="Product ke baare mein kuch batayein..."></textarea>
+                    <input type="text" id="prodAddress" placeholder="Samaan kahan se lena hoga? (Pata)" required>
+                    <label style="font-size: 12px; display: block; margin-top: 5px;">Product Photo:</label>
+                    <input type="file" id="prodImage" accept="image/*">
+                    
+                    <button type="submit" id="postBtn">Post Karein</button>
+                    <button type="button" id="cancelEdit" style="display:none; background:#7f8c8d; margin-top:10px; width: 100%;">Cancel Edit</button>
+                </form>
+            </section>
+
+            <section id="marketSection" class="content-section" style="display:none;">
+                <h2 class="text-center">Kharidne ke liye Samaan</h2>
+                <div id="postContainer" class="post-grid"></div>
+            </section>
+
+            <section id="leadsSection" class="content-section" style="display:none;">
+                <h2 class="text-center">Miley huye Replies</h2>
+                <div id="leadsContainer" class="post-grid"></div>
+            </section>
+
+            <section id="soldSection" class="content-section" style="display:none;">
+                <h2 class="text-center">Bik chuka Samaan & Ratings</h2>
+                <div id="soldContainer" class="post-grid"></div>
+            </section>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
